@@ -10,11 +10,11 @@
 
    ```sh
    # 1. tar 解压到 ~/devTools/opt 目录下, 重命名
-   ➜  ~ tar -zxvf apache-hive-2.3.7-bin.tar.gz -C ~/devTools/opt
-   ➜  ~ mv ~/devTools/opt/apache-hive-2.3.7-bin ~/devTools/opt/hive-2.3.7
+   ➜  ~ tar -zxvf apache-hive-2.3.8-bin.tar.gz -C ~/devTools/opt
+   ➜  ~ mv ~/devTools/opt/apache-hive-2.3.8-bin ~/devTools/opt/hive-2.3.8
    
    # 2. 建立软连接
-   ➜  ~ sudo ln -s ~/devTools/opt/hive-2.3.7 /usr/local/hive
+   ➜  ~ sudo ln -s ~/devTools/opt/hive-2.3.8 /usr/local/hive
    
    # 3. 修改环境变量(修改 ~/.bash_profile,添加如下内容)
    export HIVE_HOME=/usr/local/hive
@@ -26,13 +26,13 @@
 2. HDFS创建Hive仓库和tmp目录
 
    ```sh
-   ➜  ~ hdfs dfs -mkdir -p /hive/warehouse
+   ➜  ~ hdfs dfs -mkdir -p /user/hive/warehouse
    ➜  ~ hdfs dfs -mkdir /tmp
    ```
 
    > `Tips`
    >
-   > ​	HDFS上Hive 仓库的路径是 ***/hive/warehouse*** 
+   > ​	HDFS 上 Hive 仓库的路径是 ***/hive/warehouse*** 
 
 
 
@@ -76,7 +76,7 @@ export HIVE_CONF_DIR=/Users/sherlock/devTools/opt/hive-2.3.7/conf
 
 	<property>
 		<name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:mysql://localhost:3306/metastore_hive?createDatabaseIfNotExist=true&amp;characterEncoding=UTF-8&amp;useSSL=false</value>
+    <value>jdbc:mysql://localhost:3306/metastore_hive?createDatabaseIfNotExist=true&characterEncoding=UTF-8&useSSL=false</value>
   </property>
 
   <property>
@@ -145,7 +145,7 @@ export HIVE_CONF_DIR=/Users/sherlock/devTools/opt/hive-2.3.7/conf
 #### hive-log4j2.properties
 
 ```properties
-property.hive.log.dir = /Users/sherlock/devTools/opt/hive-2.3.7/logs
+property.hive.log.dir = /Users/sherlock/devTools/opt/hive-2.3.8/logs
 ```
 
 

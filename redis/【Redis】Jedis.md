@@ -50,29 +50,29 @@ pool.close();
 >   设置的逐出策略类名, 默认 DefaultEvictionPolicy(当连接超过最大空闲时间,或连接数超过最大空闲连接数)
 >
 >4. 是否启用pool的jmx管理功能, 默认true
->   config.setJmxEnabled(``true``);
+>     config.setJmxEnabled(``true``);
 >
 >5. MBean oName = new ObjectName("org.apache.commons.pool2:type=GenericObjectPool,name=" + "pool" + i); 默认为"pool", JMX不熟, 具体不知道是干啥的...默认就好.
->   config.setJmxNamePrefix(``"pool"``);
+>     config.setJmxNamePrefix(``"pool"``);
 >
 >6. 是否启用后进先出, 默认true
->   config.setLifo(``true``);
+>     config.setLifo(``true``);
 >7. 最大空闲连接数, 默认8个
->   config.setMaxIdle(``8``);
+>     config.setMaxIdle(``8``);
 >8. 获取连接时的最大等待毫秒数(如果设置为阻塞时BlockWhenExhausted),如果超时就抛异常, 小于零:阻塞不确定的时间, 默认-1
->   config.setMaxWaitMillis(-``1``);
+>     config.setMaxWaitMillis(-``1``);
 >9. 逐出连接的最小空闲时间 默认1800000毫秒(30分钟)
->   config.setMinEvictableIdleTimeMillis(``1800000``);
+>     config.setMinEvictableIdleTimeMillis(``1800000``);
 >10. 最小空闲连接数, 默认0
->    config.setMinIdle(``0``);
+>       config.setMinIdle(``0``);
 >11. 每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认3
->    config.setNumTestsPerEvictionRun(``3``);
+>       config.setNumTestsPerEvictionRun(``3``);
 >12. 对象空闲多久后逐出, 当空闲时间 > 该值且空闲连接>最大空闲数时直接逐出, 不再根据MinEvictableIdleTimeMillis判断 (默认逐出策略)  
->    config.setSoftMinEvictableIdleTimeMillis(``1800000``);
+>       config.setSoftMinEvictableIdleTimeMillis(``1800000``);
 >13. 在获取连接的时候检查有效性, 默认false
->    config.setTestOnBorrow(``false``);
+>       config.setTestOnBorrow(``false``);
 >14. 逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
->    config.setTimeBetweenEvictionRunsMillis(-``1``);
+>       config.setTimeBetweenEvictionRunsMillis(-``1``);
 >
 >```java
 >JedisPool pool = new JedisPool(config, "localhost", );
@@ -260,10 +260,3 @@ pool.close();
 
 > 对于Jedis的基本使用还是很简单的。要根据不用的应用场景选择对于的使用方式。
 > 另外，Spring也提供了Spring-data-redis包来整合Jedis的操作，另外Spring也单独分装了Jedis(我将会在另外一篇文章介绍)。
-
-
-
-作者：曹金桂
-链接：https://www.jianshu.com/p/a1038eed6d44
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

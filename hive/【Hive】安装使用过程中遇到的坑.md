@@ -10,7 +10,7 @@
 进入mysql,输入这三条命令:
 `show variables like "char%";`
 `use <hive元数据库>;`
-`alter database hive character set latin1;`
+`alter database metastore character set latin1;`
 
 修改前
 

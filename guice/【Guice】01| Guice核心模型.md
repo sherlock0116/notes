@@ -155,8 +155,6 @@ MultilingualGreeter greeter = new MultilingualGreeter(
 
 总结：`Guice` 的 `Key` 是一种类型，它与可选的绑定注释结合在一起用于标识依赖关系。
 
-
-
 ## Guice Provider
 
 `Guice` 用 `Provider` 表示能够创建满足依赖要求的对象的工厂。

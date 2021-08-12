@@ -9,7 +9,9 @@
 1. create topic
 
    ```sh
-   kafka-topics.sh --create --zookeeper localhost:2181/kafka-2.4 --partitions 2 --replication-factor 2 --topic first
+   kafka-topics.sh --create --zookeeper localhost:2181/kafka-2.4 --partitions 1 --replication-factor 1 --topic test_maxwell
+   
+   kafka-topics --create --zookeeper 10.0.15.130:2181/kafka --partitions 3 --replication-factor 2 --topic dwd_homedo_dwd_trd_promotion_info
    ```
 
 2. list topics
@@ -20,6 +22,8 @@
    
    # 支持 0.9 及更新的版本
    kafka-topics.sh --list --bootstrap-server localhost:9092
+   
+   kafka-topics --list --bootstrap-server 10.0.15.130:9092
    ```
 
 3. delete topic
@@ -63,17 +67,22 @@
 
    ```sh
    # 默认从最新 offset 处开始消费
+   post_66f27704d3162247
+   profile_66f27704d3162247
    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic first
+   kafka-console-consumer --bootstrap-server 10.10.110.235:9092:9092 --topic test-ubt-ods-001
    
    # 从 offset=0 处开始重新消费
    kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic first
+   kafka-console-consumer --bootstrap-server cdh10:9092 --topic dwd_homedo_dwd_trd_order_order
    
    # 仅支持版本 0.9+
    # 且需要将 config/producer.properties 和 config/consumer.properties 中的 group.id 设置成一样的。
    kafka-console-consumer.sh --bootstrap-server localhost:9092 --new-consumer --from-beginning --consumer.config config/consumer.properties --topic test 
    
    # 高级点的用法
-   kafka-simple-consumer-shell.sh --brist localhost:9092 --topic test --partition 0 --offset 1234  --max-messages 10
+   kafka-simple-consumer-shell.sh --brist cdh10:9092 --topic test --partition 0 --offset 1  --max-messages 10
+   kafka-simple-consumer-shell --brist cdh10:9092 --topic post_66f27704d3162247 --partition 0 --offset 1  --max-messages 10
    ```
 
 

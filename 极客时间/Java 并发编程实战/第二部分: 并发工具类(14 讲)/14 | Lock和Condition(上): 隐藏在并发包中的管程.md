@@ -52,7 +52,7 @@ class X {
 }
 ```
 
-答案必须是肯定的。Java SDK  里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是需要简单介绍一下：***它是利用了 volatile 相关的 Happens-Before  规则***。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写  state 的值；解锁的时候，也会读写 state 的值（简化后的代码如下面所示）。也就是说，在执行 value+=1 之前，程序先读写了一次  volatile 变量 state，在执行 value+=1 之后，又读写了一次 volatile 变量 state。根据相关的  Happens-Before 规则：
+答案必须是肯定的。Java SDK  里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是需要简单介绍一下：***它是利用了 volatile 相关的 Happens-Before 规则***。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写  state 的值；解锁的时候，也会读写 state 的值（简化后的代码如下面所示）。也就是说，在执行 value+=1 之前，程序先读写了一次  volatile 变量 state，在执行 value+=1 之后，又读写了一次 volatile 变量 state。根据相关的  Happens-Before 规则：
 
 1. 顺序性规则：对于线程 T1，value+=1  Happens-Before 释放锁的操作 unlock()；
 2. volatile 变量规则：由于 state = 1 会先读取  state，所以线程 T1 的 unlock() 操作 Happens-Before 线程 T2 的 lock() 操作；
